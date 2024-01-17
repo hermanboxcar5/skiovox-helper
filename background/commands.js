@@ -90,7 +90,7 @@ async function onCommand(name, currentTab) {
 
     case "FIND_TEXT":
       if (currentTab && currentTab.id !== chrome.tabs.TAB_ID_NONE) {
-        cchrome.tabs.sendMessage(currentTab.id, { action: 'triggerFind' });
+        chrome.tabs.sendMessage(currentTab.id, { action: 'triggerFind' });
       }
       
       break;
