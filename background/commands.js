@@ -88,8 +88,11 @@ async function onCommand(name, currentTab) {
       cycleTabs(recentTabs, -1)
       break;
 
-    case "FIND":
-      find()
+    case "FIND_TEXT":
+      if (currentTab && currentTab.id !== chrome.tabs.TAB_ID_NONE) {
+        cchrome.tabs.sendMessage(currentTab.id, { action: 'triggerFind' });
+      }
+      
       break;
 
     case "SWITCH_WINDOWS":
