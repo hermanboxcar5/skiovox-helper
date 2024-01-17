@@ -17,6 +17,12 @@ function cycleTabs(tabs, direction) {
   chrome.tabs.update(tabs[index].id, { active: true });
 }
 
+function find(){
+  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'triggerFind' });
+  });
+}
+
 async function onCommand(name, currentTab) {
   let recentWindow = await getRecentWindow()
   let recentTabs = recentWindow.tabs
