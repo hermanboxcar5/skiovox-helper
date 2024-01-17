@@ -88,6 +88,10 @@ async function onCommand(name, currentTab) {
       cycleTabs(recentTabs, -1)
       break;
 
+    case "FIND":
+      find()
+      break;
+
     case "SWITCH_WINDOWS":
       chrome.windows.getAll((windows) => {
         if (windows.length > 1) {
